@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 6vh; /* Set height to 8vh */
+  height: 6vh;
   position: relative;
 }
 
@@ -22,8 +22,8 @@
 
 .logo-cmcu img,
 .logo-doan {
-  height: 40px; /* Đặt chiều cao cố định cho cả hai logo */
-  width: auto; /* Đảm bảo giữ nguyên tỷ lệ */
+  height: 40px;
+  width: auto;
 }
 
 .logo-doan {
@@ -71,7 +71,7 @@
   .header {
     flex-direction: column;
     text-align: center;
-    height: auto; /* Height can adapt for mobile view */
+    height: auto;
   }
 
   .nav-links {
@@ -90,7 +90,7 @@
   }
 
   .nav-links.open {
-    max-height: 300px; /* Chiều cao tối đa khi menu mở */
+    max-height: 300px;
     padding: 1rem 0;
     gap: 1rem;
   }

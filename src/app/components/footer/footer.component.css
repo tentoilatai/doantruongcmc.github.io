@@ -60,7 +60,7 @@
     flex-direction: column;
     text-align: center;
     padding: 1rem;
-    height: auto; /* Allow height to adjust on smaller screens */
+    height: auto;
   }
 
   .footer .social-links {
