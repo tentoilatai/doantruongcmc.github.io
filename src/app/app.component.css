@@ -1,5 +1,20 @@
 .container {
-  min-height: 100vh;
+  min-height: 100vh; /* Chiều cao tối thiểu bằng chiều cao màn hình */
   display: flex;
   flex-direction: column;
+}
+
+/* Fix cho iOS và các trình duyệt không xử lý chính xác 100vh */
+@supports (height: 100dvh) {
+  .container {
+    min-height: 100dvh; /* Dùng 100dvh nếu trình duyệt hỗ trợ */
+  }
+}
+
+header, footer {
+  flex-shrink: 0; /* Không để header/footer co lại */
+}
+
+router-outlet {
+  flex-grow: 1; /* Nội dung chính chiếm không gian còn lại */
 }

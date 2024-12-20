@@ -3,19 +3,15 @@
   --secondary-color: #ffcc00;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
 .header {
   background: var(--primary-color);
   color: white;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: auto;
+  height: 6vh; /* Set height to 8vh */
+  position: relative;
 }
 
 .logo-container {
@@ -24,43 +20,82 @@ body {
   gap: 20px;
 }
 
-.logo-cmcu img {
-  max-width: 200px;
-  height: auto;
+.logo-cmcu img,
+.logo-doan {
+  height: 40px; /* Đặt chiều cao cố định cho cả hai logo */
+  width: auto; /* Đảm bảo giữ nguyên tỷ lệ */
 }
 
 .logo-doan {
-  max-width: 40px;
-  height: auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 .nav-links {
   display: flex;
   gap: 1.5rem;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
   font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
 }
 
 .nav-links a:hover {
   color: var(--secondary-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
 }
 
 @media (max-width: 768px) {
   .header {
-      flex-direction: column;
-      text-align: center;
-      padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+    height: auto; /* Height can adapt for mobile view */
   }
 
   .nav-links {
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-top: 1rem;
+    flex-direction: column;
+    max-height: 0;
+    width: 100%;
+    background: var(--primary-color);
+    padding: 0;
+    gap: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links.open {
+    max-height: 300px; /* Chiều cao tối đa khi menu mở */
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+
+  .hamburger {
+    display: flex;
   }
 }
