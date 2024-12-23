@@ -39,11 +39,10 @@ iframe {
   border: 3px solid var(--primary-color);
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);  /* Đổ bóng nhẹ hơn */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease; /* Bỏ transform scale để tránh mờ */
 }
 
 iframe:hover {
-  transform: scale(1.003);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Đổ bóng nhẹ hơn khi hover */
 }
 
