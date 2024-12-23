@@ -1,42 +1,38 @@
-<main class="main">
-    <div class="content">
-      <h2>QR Code Generator</h2>
+<main class="main" style="height: 88vh; display: flex; flex-direction: row; justify-content: center; align-items: center;">
+  <div class="content" style="width: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <h2>Xuân tình nguyện 2025</h2>
+      <p>Ủng hộ tình nguyện</p>
       <form [formGroup]="qrForm" (ngSubmit)="generateQR()" class="form-container">
-        
-        <!-- Description Input Field -->
         <div class="form-group">
           <input 
             type="text" 
             formControlName="description" 
-            placeholder="Enter description"
+            placeholder="Nhập nội dung"
             class="form-input">
           <div class="error-message" *ngIf="qrForm.get('description')?.touched && qrForm.get('description')?.invalid">
-            Description is required
+            Nội dung ủng hộ là bắt buộc
           </div>
         </div>
-  
-        <!-- Amount Input Field -->
+
         <div class="form-group">
-          <input 
+          <input
             type="number" 
             formControlName="amount" 
-            placeholder="Enter amount"
+            placeholder="Nhập số tiền muốn ủng hộ"
             class="form-input">
           <div class="error-message" *ngIf="qrForm.get('amount')?.touched && qrForm.get('amount')?.invalid">
-            Please enter a valid amount
+            Hãy nhập giá trị hợp lệ
           </div>
         </div>
-  
-        <!-- Submit Button -->
         <button type="submit" class="submit-button" [disabled]="qrForm.invalid">
-          Generate QR Code
+          Tạo mã QR
         </button>
       </form>
-  
-      <!-- QR Code Image -->
-      <div class="qr-container" *ngIf="qrImageUrl">
-        <img [src]="qrImageUrl" alt="QR Code" class="qr-image">
+  </div>
+
+  <div class="qr-container" style="width: 50%; display: flex; justify-content: center; align-items: center;">
+      <div>
+        <img [src]="qrImageUrl || 'https://upload.wikimedia.org/wikipedia/vi/0/09/Huy_Hi%E1%BB%87u_%C4%90o%C3%A0n.png'" alt="QR Code" class="qr-image">
       </div>
-    </div>
-  </main>
-  
+  </div>
+</main>

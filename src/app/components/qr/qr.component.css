@@ -5,6 +5,32 @@
   --error-color: #dc3545;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  padding: 20px;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);  /* Đổ bóng nhẹ */
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.05);  /* Đổ bóng nhẹ hơn */
+}
+
 .form-container {
   width: 100%;
   max-width: 400px;
@@ -74,4 +100,23 @@
   max-width: 100%;
   height: auto;
   border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .content {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    flex-direction: column;
+  }
+  .content {
+    width: 100%;
+  }
 }
