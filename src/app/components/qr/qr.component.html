@@ -1,0 +1,42 @@
+<main class="main">
+    <div class="content">
+      <h2>QR Code Generator</h2>
+      <form [formGroup]="qrForm" (ngSubmit)="generateQR()" class="form-container">
+        
+        <!-- Description Input Field -->
+        <div class="form-group">
+          <input 
+            type="text" 
+            formControlName="description" 
+            placeholder="Enter description"
+            class="form-input">
+          <div class="error-message" *ngIf="qrForm.get('description')?.touched && qrForm.get('description')?.invalid">
+            Description is required
+          </div>
+        </div>
+  
+        <!-- Amount Input Field -->
+        <div class="form-group">
+          <input 
+            type="number" 
+            formControlName="amount" 
+            placeholder="Enter amount"
+            class="form-input">
+          <div class="error-message" *ngIf="qrForm.get('amount')?.touched && qrForm.get('amount')?.invalid">
+            Please enter a valid amount
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <button type="submit" class="submit-button" [disabled]="qrForm.invalid">
+          Generate QR Code
+        </button>
+      </form>
+  
+      <!-- QR Code Image -->
+      <div class="qr-container" *ngIf="qrImageUrl">
+        <img [src]="qrImageUrl" alt="QR Code" class="qr-image">
+      </div>
+    </div>
+  </main>
+  
