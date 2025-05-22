@@ -1,33 +1,554 @@
 <!DOCTYPE html>
-<html lang="en" data-critters-container>
-  <head>
-    <title>Xuân tình nguyện 2025 - Đoàn Thanh niên Trường Đại học CMC</title>
+<html lang="vi">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://cmcu.edu.vn/wp-content/uploads/2022/12/cropped-favicon-3-32x32.jpg" sizes="32x32">
-    <link rel="icon" href="https://cmcu.edu.vn/wp-content/uploads/2022/12/cropped-favicon-3-192x192.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" href="https://cmcu.edu.vn/wp-content/uploads/2022/12/cropped-favicon-3-180x180.jpg">
-    <base href="/">
-  <style>*{margin:0;padding:0;box-sizing:border-box}:root{--primary-color:#018ed5;--secondary-color:#ffffff;--text-color:#333;--light-color:#ecf0f1}body{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;color:var(--text-color)}</style><link rel="stylesheet" href="styles-T5Q62X6Z.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-T5Q62X6Z.css"></noscript></head>
-  <body>
-    <app-root>Loading...</app-root>
-  <script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-W3NUMKOV.js" type="module"></script></body>
+    <title>Đoàn Thanh niên - Đại học CMC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <script>
-    (function(d,t) {
-      var BASE_URL="https://app.chatwoot.com";
-      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=BASE_URL+"/packs/js/sdk.js";
-      g.defer = true;
-      g.async = true;
-      s.parentNode.insertBefore(g,s);
-      g.onload=function(){
-        window.chatwootSDK.run({
-          websiteToken: 'KMxqxux87AfLCPr5mjW5s2XN',
-          baseUrl: BASE_URL
-        })
-      }
-    })(document,"script");
-  </script>
-  
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #d32f2f, #1976d2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 4s ease-in-out forwards;
+        }
+
+        .loader-content {
+            text-align: center;
+            display: flex;
+            gap: 20px;
+        }
+
+        .loader-content img {
+            width: 100px;
+            height: auto;
+            animation: fadeInScaleToHeader 4s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        @keyframes fadeInScaleToHeader {
+            0% { opacity: 0; transform: scale(0.5); }
+            25% { opacity: 0.7; transform: scale(1.2); }
+            50% { opacity: 1; transform: scale(1); }
+            75% { opacity: 1; transform: scale(0.8) translateY(-20px); }
+            100% { opacity: 0.3; transform: scale(0.3) translateY(-200px); }
+        }
+
+        @keyframes fadeOut {
+            0%, 75% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        /* Page Sections */
+        .page-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Page 1 */
+        .page-1 {
+            background: linear-gradient(135deg, #d32f2f 0%, #1976d2 50%, #0d47a1 100%);
+            color: white;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .page-header {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: fadeInDown 1s ease-out 3.5s both;
+            display: flex;
+            gap: 20px;
+        }
+
+        .page-header img {
+            width: 80px;
+            height: auto;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out 3.5s both;
+            margin: auto;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            fill: white;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-arrow:hover {
+            opacity: 1;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-1 { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .circle-2 { width: 120px; height: 120px; top: 60%; right: 15%; animation-delay: 2s; }
+        .circle-3 { width: 60px; height: 60px; top: 80%; left: 20%; animation-delay: 4s; }
+
+        /* Page 2 - Liên hệ */
+        .page-2 {
+            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .contact-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #d32f2f, #1976d2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: nowrap;
+            max-width: 100%;
+            overflow-x: auto;
+            padding: 0 20px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 180px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 123, 255, 0.2);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 10px;
+            padding: 10px;
+            background: linear-gradient(135deg, #d32f2f, #1976d2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .contact-card h3 {
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            color: #666;
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            word-break: break-all;
+            line-height: 1.2;
+        }
+
+        .contact-card a {
+            color: #1976d2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #d32f2f;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+            to { text-shadow: 0 4px 30px rgba(255, 255, 255, 0.2); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Scroll Effects */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d32f2f, #1976d2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+        }
+
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header img {
+                width: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            .contact-card {
+                width: 160px;
+                height: 140px;
+                padding: 12px;
+            }
+
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header img {
+                width: 50px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .contact-title {
+                font-size: 2rem;
+            }
+
+            .contact-card {
+                width: 140px;
+                height: 120px;
+                padding: 10px;
+            }
+
+            .contact-grid {
+                gap: 8px;
+                padding: 0 5px;
+            }
+
+            .contact-icon {
+                width: 35px;
+                height: 35px;
+                margin-bottom: 8px;
+            }
+
+            .contact-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-content">
+            <img src="https://upload.wikimedia.org/wikipedia/vi/0/09/Huy_Hi%E1%BB%87u_%C4%90o%C3%A0n.png" alt="Đoàn Thanh niên Logo">
+            <img src="https://cmcu.edu.vn/wp-content/uploads/2022/09/logo-CMC-Uni-trang-ngang.png" alt="CMC University Logo">
+        </div>
+    </div>
+
+    <!-- Page 1: Đoàn Thanh niên -->
+    <section class="page-section page-1" id="page1">
+        <div class="page-header">
+            <img src="https://upload.wikimedia.org/wikipedia/vi/0/09/Huy_Hi%E1%BB%87u_%C4%90o%C3%A0n.png" alt="Đoàn Thanh niên Logo">
+            <img src="https://cmcu.edu.vn/wp-content/uploads/2022/09/logo-CMC-Uni-trang-ngang.png" alt="CMC University Logo">
+        </div>
+
+        <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+            <div class="floating-circle circle-3"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1>Đoàn Thanh niên Cộng sản HCM<br>Trường Đại học CMC</h1>
+            <p>Hướng đến Đại hội Đại biểu Công nhân nhiệm kỳ 2025 - 2027</p>
+        </div>
+
+        <div class="scroll-indicator" onclick="scrollToPage2()">
+            <svg class="scroll-arrow" viewBox="0 0 24 24">
+                <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" onclick="scrollToTop()">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
+        </svg>
+    </div>
+
+    <!-- Page 2: Liên hệ -->
+    <section class="page-section page-2" id="page2">
+        <div class="contact-container scroll-fade">
+            <h2 class="contact-title">Liên Hệ Với Chúng Tôi</h2>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:doanthanhnien@cmcu.edu.vn">doanthanhnien@cmcu.edu.vn</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </div>
+                    <h3>Điện thoại</h3>
+                    <p><a href="tel:+8428012004">28012004</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <h3>Địa chỉ</h3>
+                    <p>Hà Đông, Hà Nội</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling between pages
+        function scrollToPage2() {
+            document.getElementById('page2').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToTop() {
+            document.getElementById('page1').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', () => {
+            const scrollToTopBtn = document.querySelector('.scroll-to-top');
+            const scrolled = window.pageYOffset;
+            if (scrolled > window.innerHeight / 2) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+
+            // Parallax effect for floating elements
+            const parallax = document.querySelectorAll('.floating-circle');
+            parallax.forEach((circle, index) => {
+                const speed = 0.5 + (index * 0.2);
+                circle.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollElements = document.querySelectorAll('.scroll-fade');
+            scrollElements.forEach(el => observer.observe(el));
+        });
+
+        // Add hover effects to contact cards
+        document.querySelectorAll('.contact-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
 </html>
